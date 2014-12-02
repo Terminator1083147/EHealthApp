@@ -1,5 +1,7 @@
 package IPMEDT4.groep2.e_health;
 
+///I made some comments and stuff to test the github
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
