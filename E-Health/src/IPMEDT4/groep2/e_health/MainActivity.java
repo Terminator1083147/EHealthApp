@@ -7,6 +7,7 @@ package IPMEDT4.groep2.e_health;
 
 //quirijn
 //bert-jan
+//Maarten
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
