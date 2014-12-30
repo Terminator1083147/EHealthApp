@@ -10,6 +10,7 @@ package IPMEDT4.groep2.e_health;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 
@@ -24,9 +25,15 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        //Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main_activity_action, menu);
         return true;
+    	//MenuInflater test = getMenuInflater();
+    	//test.inflate(R.menu.main_activity_action, menu);
+    	//return super.onCreateOptionsMenu(menu);
+    	
+        
     }
 
     @Override
@@ -36,8 +43,15 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+        	//als over ons drukt voer code uit
             return true;
         }
+        else if (id == R.id.menu1) {
+            
+        	//als over ons drukt voer code uit
+        	return true;
+        }
+        
         return super.onOptionsItemSelected(item);
     }
 }
