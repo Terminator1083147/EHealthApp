@@ -34,10 +34,10 @@ public class MainActivity extends ActionBarActivity {
         dlDrawer.setupDrawerConfiguration((ListView) findViewById(R.id.lvDrawer), 
                      R.layout.drawer_nav_item, R.id.flContent);
         // Add nav items
-        dlDrawer.addNavItem("Startpagina", "First Fragment", FirstFragment.class);
-        dlDrawer.addNavItem("Filter menu", "Second Fragment", SecondFragment.class);
-        dlDrawer.addNavItem("Resultaten", "Third Fragment", ThirdFragment.class);
-        dlDrawer.addNavItem("Opgeslagen resultaten", "Opgeslagen Fragment", OpgeslagenFragment.class);
+        dlDrawer.addNavItem("Startpagina", "Startpagina", FirstFragment.class);
+        dlDrawer.addNavItem("Filter menu", "Filter menu", SecondFragment.class);
+        dlDrawer.addNavItem("Resultaten", "Resultaten", ThirdFragment.class);
+        dlDrawer.addNavItem("Opgeslagen resultaten", "Opgeslagen resultaten", OpgeslagenFragment.class);
         // Select default
         if (savedInstanceState == null) {
             dlDrawer.selectDrawerItem(0);   
