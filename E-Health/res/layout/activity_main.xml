@@ -7,11 +7,26 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="IPMEDT4.groep2.e_health.MainActivity" >
-
+    
+	<!-- test 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
+       test 
+    
+    <TextView 
+	    android:id="@+id/text_startpagina"
+	    android:layout_width="240dp"
+        android:layout_height="match_parent"
+        />
+	    
+    <TextView 
+	    android:id="@+id/text_filtermenu"
+	    android:layout_width="240dp"
+        android:layout_height="match_parent"
+        />
+        -->
     
     <IPMEDT4.groep2.e_health.FragmentNavigationDrawer
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,7 +41,8 @@
         android:layout_height="match_parent" />
 
     <!-- The navigation drawer -->
-    <ListView android:id="@+id/lvDrawer"
+    <ListView 
+        android:id="@+id/lvDrawer"
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
@@ -37,7 +53,7 @@
      />
 </IPMEDT4.groep2.e_health.FragmentNavigationDrawer>
     
-
+	
    
     
 </RelativeLayout>
