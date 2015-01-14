@@ -13,7 +13,9 @@
     
     <string name="action_search">search</string>
 
-    
+    <string name="startpagina">Informatie e-health</string>
+    <string name="filtermenu">filter</string>
+    <string name="resultaten">resultaat</string>
     
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

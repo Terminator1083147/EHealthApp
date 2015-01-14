@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class FirstFragment extends Fragment {
+public class StartpaginaFragment extends Fragment {
 
 	/*
 	public void onCreate(Bundle savedInstanceState) {

@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 
@@ -34,10 +35,10 @@ public class MainActivity extends ActionBarActivity {
         dlDrawer.setupDrawerConfiguration((ListView) findViewById(R.id.lvDrawer), 
                      R.layout.drawer_nav_item, R.id.flContent);
         // Add nav items
-        dlDrawer.addNavItem("Startpagina", "Startpagina", FirstFragment.class);
-        dlDrawer.addNavItem("Filter menu", "Filter menu", SecondFragment.class);
-        dlDrawer.addNavItem("Resultaten", "Resultaten", ThirdFragment.class);
-        dlDrawer.addNavItem("Opgeslagen resultaten", "Opgeslagen resultaten", OpgeslagenFragment.class);
+        dlDrawer.addNavItem("Startpagina", "Startpagina", StartpaginaFragment.class);
+        dlDrawer.addNavItem("Filter menu", "Filter menu", FiltermenuFragment.class);
+        dlDrawer.addNavItem("Resultaten", "Resultaten", ResultatenFragment.class);
+        
         // Select default
         if (savedInstanceState == null) {
             dlDrawer.selectDrawerItem(0);   
@@ -107,6 +108,11 @@ public class MainActivity extends ActionBarActivity {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggles
         dlDrawer.getDrawerToggle().onConfigurationChanged(newConfig);
+    }
+    
+    
+    public void myClickMethod(View v){
+        ResultatenFragment.onClickButton1(v);
     }
 
 }
