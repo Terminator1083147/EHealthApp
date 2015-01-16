@@ -29,7 +29,7 @@ import android.widget.TextView;
 public class MainActivity extends ActionBarActivity {
 	
 	private FragmentNavigationDrawer dlDrawer;
-	private TextView responseTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,54 +50,10 @@ public class MainActivity extends ActionBarActivity {
         if (savedInstanceState == null) {
             dlDrawer.selectDrawerItem(0);   
         }
-        
-        this.responseTextView = (TextView) this.findViewById(R.id.responseTextView);
-        
-        new GetAllIdTask().execute(new ApiConnector());
-        
+     
     }
     
-    public void setTextToTextView(JSONArray jsonArray) {
 
-        String s = "";
-        for(int i=0; i<jsonArray.length();i++) {
-
-            JSONObject json = null;
-            try {
-                json = jsonArray.getJSONObject(i);
-                s = s +
-                        "Id : "+json.getInt("id")+"\n"+
-                        "Naam : "+json.getString("naam")+"\n"+
-                        "Beschrijving : "+json.getString("beschrijving")+"\n"+
-                        "Gebruiker : "+json.getString("gebruiker")+"\n"+
-                        "Zorgproces : "+json.getString("zorgproces")+"\n"+
-                        "Technologie : "+json.getString("technologie")+"\n\n";
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        this.responseTextView.setText(s);
-
-    }
-
-    private class GetAllIdTask extends AsyncTask<ApiConnector,Long,JSONArray> {
-
-        @Override
-        protected JSONArray doInBackground(ApiConnector... params) {
-
-           return params[0].getAllId();
-
-        }
-
-        @Override
-        protected void onPostExecute(JSONArray jsonArray) {
-
-            setTextToTextView(jsonArray);
-
-        }
-    }
     
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
