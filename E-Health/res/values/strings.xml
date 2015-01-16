@@ -20,9 +20,13 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     
+    <string name="result0">Filter gebruiker</string>
+    <string name="result1">Filter process</string>
+    <string name="result2">Filter technologie</string>
     
 	<!--  
     <string name="startpagina">startpagina</string>
     <string name="filtermenu">filtermenu</string>
     -->
+    <string name="zoekKnop">Zoeken</string>
 </resources>

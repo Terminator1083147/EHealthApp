@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:onClick="myClickMethod"
+        android:onClick="myClickMethod1"
         android:text="Button" />
 
 </RelativeLayout>

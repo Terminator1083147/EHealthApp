@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.TextView;
@@ -33,7 +34,7 @@ public class FiltermenuFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
-		String[] groups = { "Gebruikers", "Zorgproces", "Technologie" };
+		final String[] groups = { "Gebruikers", "Zorgproces", "Technologie" };
 
 		final String[][] children = {
 				{ "Zorgverleners in eigen context",
@@ -58,19 +59,50 @@ public class FiltermenuFragment extends Fragment {
 			@Override
 			public boolean onChildClick(ExpandableListView parent, View v,
 					int groupPosition, int childPosition, long id) {
-			
-				Toast.makeText(getActivity(), children[groupPosition][childPosition] + " is geselecteerd!",
-						Toast.LENGTH_LONG).show();
 				
-				//Log.i("childPosition ", children[groupPosition][childPosition] );
+				TextView result0 = (TextView) rootview.findViewById(R.id.result0);
+				TextView result1 = (TextView) rootview.findViewById(R.id.result1);		
+				TextView result2 = (TextView) rootview.findViewById(R.id.result2);
+				
+				String group = children[groupPosition][childPosition].toString();				
+				
+				if (groupPosition == 0) {
+					
+					result0.setText(group);
+					
+				} else if (groupPosition == 1) {
+
+					result1.setText(group);
+					
+				} else if (groupPosition == 2) {
+
+					result2.setText(group);
+				
+				}
+
 				return false;
+				
 			}
+			
 		});
 
 		return rootview;
 
+	} 
+	
+	public static void zoekOpFilter(View v) {
+		
+		//Haal alle gegevens op uit de resultaten.
+		
+		//Kijk of er filters zijn ingevuld
+		
+		//Geen filter = zoek op alles, een of meer filters = stuur filters naar volgende methode.
+		// if (result0 && result1 && result2 == "Geen filter" {
+		//		SELECT * FROM ehealth
+		//}
+		
 	}
-
+	
 	public class SavedTabsListAdapter extends BaseExpandableListAdapter {
 
 		String[] groups;
@@ -126,6 +158,8 @@ public class FiltermenuFragment extends Fragment {
 			// textView.setTextSize(50);
 			textView.setHeight((int) getResources().getDimension(
 					R.dimen.listview));
+			textView.setWidth((int) getResources().getDimension(
+					R.dimen.listwidth));
 			textView.setTextSize((int) getResources().getDimension(
 					R.dimen.listtextgrote));
 
