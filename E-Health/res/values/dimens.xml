@@ -6,5 +6,6 @@
     
     <dimen name="listview">180dp</dimen>
     <dimen name="listtextgrote">80dp</dimen>
+    <dimen name="childlisttextgrote">35dp</dimen>
 
 </resources>
