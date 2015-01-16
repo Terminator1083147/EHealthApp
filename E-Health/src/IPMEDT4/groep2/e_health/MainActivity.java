@@ -9,20 +9,27 @@ package IPMEDT4.groep2.e_health;
 //bert-jan
 //Maarten
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
 	
 	private FragmentNavigationDrawer dlDrawer;
+	private TextView responseTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,53 @@ public class MainActivity extends ActionBarActivity {
         // Select default
         if (savedInstanceState == null) {
             dlDrawer.selectDrawerItem(0);   
+        }
+        
+        this.responseTextView = (TextView) this.findViewById(R.id.responseTextView);
+        
+        new GetAllIdTask().execute(new ApiConnector());
+        
+    }
+    
+    public void setTextToTextView(JSONArray jsonArray) {
+
+        String s = "";
+        for(int i=0; i<jsonArray.length();i++) {
+
+            JSONObject json = null;
+            try {
+                json = jsonArray.getJSONObject(i);
+                s = s +
+                        "Id : "+json.getInt("id")+"\n"+
+                        "Naam : "+json.getString("naam")+"\n"+
+                        "Beschrijving : "+json.getString("beschrijving")+"\n"+
+                        "Gebruiker : "+json.getString("gebruiker")+"\n"+
+                        "Zorgproces : "+json.getString("zorgproces")+"\n"+
+                        "Technologie : "+json.getString("technologie")+"\n\n";
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        this.responseTextView.setText(s);
+
+    }
+
+    private class GetAllIdTask extends AsyncTask<ApiConnector,Long,JSONArray> {
+
+        @Override
+        protected JSONArray doInBackground(ApiConnector... params) {
+
+           return params[0].getAllId();
+
+        }
+
+        @Override
+        protected void onPostExecute(JSONArray jsonArray) {
+
+            setTextToTextView(jsonArray);
+
         }
     }
     

@@ -3,7 +3,9 @@
     package="IPMEDT4.groep2.e_health"
     android:versionCode="1"
     android:versionName="1.0" >
-
+	
+    <uses-permission android:name="android.permission.INTERNET" />
+    
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="21" />
