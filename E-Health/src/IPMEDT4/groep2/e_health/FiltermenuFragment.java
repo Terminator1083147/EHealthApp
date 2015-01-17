@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 public class FiltermenuFragment extends Fragment {
 
+	String r0, r1, r2;
 	/*
 	 * public void onCreate(Bundle savedInstanceState) {
 	 * super.onCreate(savedInstanceState);
@@ -69,6 +70,7 @@ public class FiltermenuFragment extends Fragment {
 				if (groupPosition == 0) {
 					
 					result0.setText(group);
+					//String r0 = (String) result0.getText();
 					
 				} else if (groupPosition == 1) {
 
@@ -92,7 +94,53 @@ public class FiltermenuFragment extends Fragment {
 	
 	public static void zoekOpFilter(View v) {
 		
-		//Haal alle gegevens op uit de resultaten.
+		String r0, r1, r2;
+		r0 = v.getResources().getString(R.string.result0);
+				//(String) v.getResources().getText(R.string.result0);
+		r1 = v.getResources().getString(R.string.result1);
+		r2 = v.getResources().getString(R.string.result2);
+		
+		if (r0 == "Filter gebruiker" && r1 == "Filter process" && r2 == "Filter technologie") {
+			
+			Log.i("ALLES","SELECT * FROM ehealth");
+			
+		} else if (r0 != "Filter gebruiker" && r1 == "Filter process" && r2 == "Filter technologie") {
+			
+			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE gebruiker = r0");
+				
+		} else if (r0 == "Filter gebruiker" && r1 != "Filter process" && r2 == "Filter technologie") {
+			
+			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE process = r1");
+			
+		} else if (r0 == "Filter gebruiker" && r1 == "Filter process" && r2 != "Filter technologie") {
+			
+			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE technologie = r2");
+			
+		} else if (r0 != "Filter gebruiker" && r1 != "Filter process" && r2 == "Filter technologie") {
+			
+			Log.i("ZOEKOPr0+r1","SELECT * FROM ehealth WHERE gebruiker = r0 AND process = r1");
+			
+		} else if (r0 != "Filter gebruiker" && r1 == "Filter process" && r2 != "Filter technologie") {
+			
+			Log.i("ZOEKOPr0+r2","SELECT * FROM ehealth WHERE gebruiker = r0 AND technologie = r2");
+			
+		} else if (r0 == "Filter gebruiker" && r1 != "Filter process" && r2 != "Filter technologie") {
+			
+			Log.i("ZOEKOPr1+r2","SELECT * FROM ehealth WHERE process = r1 AND technologie = r2");
+			
+		} else if (r0 != "Filter gebruiker" && r1 != "Filter process" && r2 != "Filter technologie") {
+			
+			Log.i("ZOEKOPr1+r2+r3","SELECT * FROM ehealth WHERE filter = r0 AND process = r1 AND technologie = r2");
+			Log.i("TAG",r0);
+			Log.i("TAG",r1);
+			Log.i("TAG",r2);
+		} 
+		
+		
+		//Kijk of het mogelijk is om de strings result0, result1 en result2 op te halen uit de app.
+		//Log.i(TAG,result0);
+		//Log.i(TAG,result1);
+		//Log.i(TAG,result2);
 		
 		//Kijk of er filters zijn ingevuld
 		
