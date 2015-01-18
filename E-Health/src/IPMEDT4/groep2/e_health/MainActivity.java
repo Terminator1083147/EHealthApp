@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -130,6 +131,8 @@ public class MainActivity extends ActionBarActivity {
 		
     	FiltermenuFragment.zoekOpFilter(v);
     	
+    	dlDrawer.selectDrawerItem(2);
+    	   
 			 
 	}
 
