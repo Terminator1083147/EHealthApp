@@ -16,6 +16,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -115,14 +116,15 @@ public class FiltermenuFragment extends Fragment {
 	
 	public static void zoekOpFilter(View v) {
 		
-		InputStream is = null;
+		
 		String gebruiker, zorgprocess, technologie;
 		gebruiker = r0;
-					//(String) v.getResources().getText(R.string.result0);
 		zorgprocess = r1;
 		technologie = r2;
 		
+		new MyAsyncTask().execute(gebruiker, zorgprocess, technologie);
 		
+		/*
 		if (gebruiker == "Ongeselecteerd" && zorgprocess == "Ongeselecteerd" && technologie == "Ongeselecteerd") {
 				
 			Log.i("ALLES","SELECT * FROM ehealth");
@@ -156,57 +158,66 @@ public class FiltermenuFragment extends Fragment {
 			Log.i("ZOEKOPr1+r2+r3","SELECT * FROM ehealth WHERE gebruiker = gebruiker AND zorgprocess = zorgprocess AND technologie = technologie");
 				
 		}
+		*/
 		
 		
-		/*		
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 		nameValuePairs.add(new BasicNameValuePair("geb", gebruiker ));
 		nameValuePairs.add(new BasicNameValuePair("zorg", zorgprocess ));
 		nameValuePairs.add(new BasicNameValuePair("tech", technologie ));
 				
-		try {
-					
-			HttpClient httpClient = new DefaultHttpClient();
-				
-			HttpPost httpPost = new HttpPost("http://149.210.186.53/getAlles");
-					
-			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-					
-			HttpResponse response = httpClient.execute(httpPost);
-					
-			HttpEntity entity = response.getEntity();
-					
-			is = entity.getContent();
-					
-		} catch (ClientProtocolException e) {
-					
-			Log.e("Log_tag", "ClientProtocol");
-			e.printStackTrace();
-					
-		} catch(IOException e) {
-					
-			Log.e("Log_tag", "IOException");
-			e.printStackTrace();
-					
-		}
-			
-		*/
 		
-				
 	} 
 			
+	
+	
+	public class MyAsyncTask extends AsyncTask<String, Integer, Double> {
+
+		InputStream is = null;
+		protected Double doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			postData(params[0], mTag, mTag);
+			return null;
+		}
+		protected void onPostExecute(Double result){
 			
-	//Kijk of het mogelijk is om de strings result0, result1 en result2 op te halen uit de app.
-	//Log.i(TAG,result0);
-	//Log.i(TAG,result1);
-	//Log.i(TAG,result2);
+		}
+		
+		protected void onProgressUpdate(Integer... progress){
 			
-	//Kijk of er filters zijn ingevuld
-			
-	//Geen filter = zoek op alles, een of meer filters = stuur filters naar volgende methode.
-	// if (result0 && result1 && result2 == "Geen filter" {
-	//		SELECT * FROM ehealth
-	//}
+		}
+		
+		public void postData(String gebruiker, String process, String technologie){
+			try {
+				
+				HttpClient httpClient = new DefaultHttpClient();
+					
+				HttpPost httpPost = new HttpPost("http://149.210.186.53/getAlles");
+						
+				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+						
+				HttpResponse response = httpClient.execute(httpPost);
+						
+				HttpEntity entity = response.getEntity();
+						
+				is = entity.getContent();
+						
+			} catch (ClientProtocolException e) {
+						
+				Log.e("Log_tag", "ClientProtocol");
+				e.printStackTrace();
+						
+			} catch(IOException e) {
+						
+				Log.e("Log_tag", "IOException");
+				e.printStackTrace();
+						
+			}
+		}
+
+		
+	}
+	
 			
 	
 	public class SavedTabsListAdapter extends BaseExpandableListAdapter {

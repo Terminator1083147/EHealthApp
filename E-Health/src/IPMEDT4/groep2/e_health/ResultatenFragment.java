@@ -30,7 +30,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
 	
     this.responseTextView = (TextView) rootview.findViewById(R.id.responseTextView);
     
-   // new GetAllIdTask().execute(new ApiConnector());
+    new GetAllIdTask().execute(new ApiConnector());
 	
 	return rootview;
 
