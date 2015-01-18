@@ -32,7 +32,9 @@ import android.widget.Toast;
 
 public class FiltermenuFragment extends Fragment {
 
-	String r0, r1, r2;
+	static String r0 = "Ongeselecteerd";
+	static String r1 = "Ongeselecteerd";
+	static String r2 = "Ongeselecteerd";
 	/*
 	 * public void onCreate(Bundle savedInstanceState) {
 	 * super.onCreate(savedInstanceState);
@@ -54,13 +56,13 @@ public class FiltermenuFragment extends Fragment {
 		final String[] groups = { "Gebruikers", "Zorgproces", "Technologie" };
 
 		final String[][] children = {
-				{ "Zorgverleners in eigen context",
+				{ "Ongeselecteerd","Zorgverleners in eigen context",
 						"Zorgverlener - zorgverlener",
 						"Zorgverlener - patient", "Zorgverlener - anderen",
 						"Patient - patient",
 						"Patient in persoonlijke levenssfeer" },
-				{ "e-Diagnose", "e-Therapie", "e-Care" },
-				{ "Webapplicaties", "Mobiele apps",
+				{ "Ongeselecteerd","e-Diagnose", "e-Therapie", "e-Care" },
+				{ "Ongeselecteerd","Webapplicaties", "Mobiele apps",
 						"Elektronische patientendossier", "Health sensoren",
 						"Videocommunicatie", "Domotica", "Robotica" }, };
 		
@@ -86,15 +88,18 @@ public class FiltermenuFragment extends Fragment {
 				if (groupPosition == 0) {
 					
 					result0.setText(group);
+					r0 = group;
 					//String r0 = (String) result0.getText();
 					
 				} else if (groupPosition == 1) {
 
 					result1.setText(group);
+					r1 = group;
 					
 				} else if (groupPosition == 2) {
 
 					result2.setText(group);
+					r2 = group;
 				
 				}
 
@@ -112,12 +117,14 @@ public class FiltermenuFragment extends Fragment {
 		
 		InputStream is = null;
 		String gebruiker, zorgprocess, technologie;
-		gebruiker = v.getResources().getString(R.string.result0);
+		gebruiker = r0;
 					//(String) v.getResources().getText(R.string.result0);
-		zorgprocess = v.getResources().getString(R.string.result1);
-		technologie = v.getResources().getString(R.string.result2);
-			
-		if (gebruiker == "Filter gebruiker" && zorgprocess == "Filter process" && technologie == "Filter technologie") {
+		zorgprocess = r1;
+		technologie = r2;
+		String ongeselecteerd = "Ongeselecteerd";
+		
+		
+		if (gebruiker && zorgprocess && technologie == "Ongeselecteerd") {
 				
 			Log.i("ALLES","SELECT * FROM ehealth");
 				
@@ -151,23 +158,7 @@ public class FiltermenuFragment extends Fragment {
 				
 		}
 		
-		if (gebruiker == "") {
-					
-			gebruiker = null;
-					
-		}
-				
-		if (zorgprocess == "") {
-					
-			zorgprocess = null;
-					
-		}
-				
-		if (technologie == "") {
-					
-			technologie = null;
-				
-		}
+		
 				
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 		nameValuePairs.add(new BasicNameValuePair("geb", gebruiker ));
