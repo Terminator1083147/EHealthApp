@@ -25,8 +25,6 @@ public class ApiConnector {
 
         String url = "http://149.210.186.53/getAlles.php";
 
-
-
         HttpEntity httpEntity = null;
 
         try {

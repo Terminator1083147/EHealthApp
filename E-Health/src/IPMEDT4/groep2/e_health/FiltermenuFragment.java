@@ -1,5 +1,21 @@
 package IPMEDT4.groep2.e_health;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -94,62 +110,112 @@ public class FiltermenuFragment extends Fragment {
 	
 	public static void zoekOpFilter(View v) {
 		
-		String r0, r1, r2;
-		r0 = v.getResources().getString(R.string.result0);
-				//(String) v.getResources().getText(R.string.result0);
-		r1 = v.getResources().getString(R.string.result1);
-		r2 = v.getResources().getString(R.string.result2);
-		
-		if (r0 == "Filter gebruiker" && r1 == "Filter process" && r2 == "Filter technologie") {
+		InputStream is = null;
+		String gebruiker, zorgprocess, technologie;
+		gebruiker = v.getResources().getString(R.string.result0);
+					//(String) v.getResources().getText(R.string.result0);
+		zorgprocess = v.getResources().getString(R.string.result1);
+		technologie = v.getResources().getString(R.string.result2);
 			
-			Log.i("ALLES","SELECT * FROM ehealth");
-			
-		} else if (r0 != "Filter gebruiker" && r1 == "Filter process" && r2 == "Filter technologie") {
-			
-			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE gebruiker = r0");
+		if (gebruiker == "Filter gebruiker" && zorgprocess == "Filter process" && technologie == "Filter technologie") {
 				
-		} else if (r0 == "Filter gebruiker" && r1 != "Filter process" && r2 == "Filter technologie") {
-			
-			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE process = r1");
-			
-		} else if (r0 == "Filter gebruiker" && r1 == "Filter process" && r2 != "Filter technologie") {
-			
-			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE technologie = r2");
-			
-		} else if (r0 != "Filter gebruiker" && r1 != "Filter process" && r2 == "Filter technologie") {
-			
-			Log.i("ZOEKOPr0+r1","SELECT * FROM ehealth WHERE gebruiker = r0 AND process = r1");
-			
-		} else if (r0 != "Filter gebruiker" && r1 == "Filter process" && r2 != "Filter technologie") {
-			
-			Log.i("ZOEKOPr0+r2","SELECT * FROM ehealth WHERE gebruiker = r0 AND technologie = r2");
-			
-		} else if (r0 == "Filter gebruiker" && r1 != "Filter process" && r2 != "Filter technologie") {
-			
-			Log.i("ZOEKOPr1+r2","SELECT * FROM ehealth WHERE process = r1 AND technologie = r2");
-			
-		} else if (r0 != "Filter gebruiker" && r1 != "Filter process" && r2 != "Filter technologie") {
-			
-			Log.i("ZOEKOPr1+r2+r3","SELECT * FROM ehealth WHERE filter = r0 AND process = r1 AND technologie = r2");
-			Log.i("TAG",r0);
-			Log.i("TAG",r1);
-			Log.i("TAG",r2);
-		} 
+			Log.i("ALLES","SELECT * FROM ehealth");
+				
+		} else if (gebruiker != "Filter gebruiker" && zorgprocess == "Filter process" && technologie == "Filter technologie") {
+				
+			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE gebruiker = gebruiker");
+					
+		} else if (gebruiker == "Filter gebruiker" && zorgprocess != "Filter process" && technologie == "Filter technologie") {
+				
+			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE zorgprocess = zorgprocess");
+				
+		} else if (gebruiker == "Filter gebruiker" && zorgprocess == "Filter process" && technologie != "Filter technologie") {
+				
+			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE technologie = technologie");
+				
+		} else if (gebruiker != "Filter gebruiker" && zorgprocess != "Filter process" && technologie == "Filter technologie") {
+				
+			Log.i("ZOEKOPr0+r1","SELECT * FROM ehealth WHERE gebruiker = gebruiker AND zorgprocess = zorgprocess");
+				
+		} else if (gebruiker != "Filter gebruiker" && zorgprocess == "Filter process" && technologie != "Filter technologie") {
+				
+			Log.i("ZOEKOPr0+r2","SELECT * FROM ehealth WHERE gebruiker = gebruiker AND technologie = technologie");
+				
+		} else if (gebruiker == "Filter gebruiker" && zorgprocess != "Filter process" && technologie != "Filter technologie") {
+				
+			Log.i("ZOEKOPr1+r2","SELECT * FROM ehealth WHERE zorgprocess = zorgprocess AND technologie = technologie");
+				
+		} else if (gebruiker != "Filter gebruiker" && zorgprocess != "Filter process" && technologie != "Filter technologie") {
+				
+			Log.i("ZOEKOPr1+r2+r3","SELECT * FROM ehealth WHERE gebruiker = gebruiker AND zorgprocess = zorgprocess AND technologie = technologie");
+				
+		}
 		
-		
-		//Kijk of het mogelijk is om de strings result0, result1 en result2 op te halen uit de app.
-		//Log.i(TAG,result0);
-		//Log.i(TAG,result1);
-		//Log.i(TAG,result2);
-		
-		//Kijk of er filters zijn ingevuld
-		
-		//Geen filter = zoek op alles, een of meer filters = stuur filters naar volgende methode.
-		// if (result0 && result1 && result2 == "Geen filter" {
-		//		SELECT * FROM ehealth
-		//}
-		
-	}
+		if (gebruiker == "") {
+					
+			gebruiker = null;
+					
+		}
+				
+		if (zorgprocess == "") {
+					
+			zorgprocess = null;
+					
+		}
+				
+		if (technologie == "") {
+					
+			technologie = null;
+				
+		}
+				
+		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+		nameValuePairs.add(new BasicNameValuePair("geb", gebruiker ));
+		nameValuePairs.add(new BasicNameValuePair("zorg", zorgprocess ));
+		nameValuePairs.add(new BasicNameValuePair("tech", technologie ));
+				
+		try {
+					
+			HttpClient httpClient = new DefaultHttpClient();
+				
+			HttpPost httpPost = new HttpPost("http://149.210.186.53/getAlles");
+					
+			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+					
+			HttpResponse response = httpClient.execute(httpPost);
+					
+			HttpEntity entity = response.getEntity();
+					
+			is = entity.getContent();
+					
+		} catch (ClientProtocolException e) {
+					
+			Log.e("Log_tag", "ClientProtocol");
+			e.printStackTrace();
+					
+		} catch(IOException e) {
+					
+			Log.e("Log_tag", "IOException");
+			e.printStackTrace();
+					
+		}
+				
+				
+	} 
+			
+			
+	//Kijk of het mogelijk is om de strings result0, result1 en result2 op te halen uit de app.
+	//Log.i(TAG,result0);
+	//Log.i(TAG,result1);
+	//Log.i(TAG,result2);
+			
+	//Kijk of er filters zijn ingevuld
+			
+	//Geen filter = zoek op alles, een of meer filters = stuur filters naar volgende methode.
+	// if (result0 && result1 && result2 == "Geen filter" {
+	//		SELECT * FROM ehealth
+	//}
+			
 	
 	public class SavedTabsListAdapter extends BaseExpandableListAdapter {
 
