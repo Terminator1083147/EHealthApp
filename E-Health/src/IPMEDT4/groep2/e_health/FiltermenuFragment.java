@@ -121,45 +121,44 @@ public class FiltermenuFragment extends Fragment {
 					//(String) v.getResources().getText(R.string.result0);
 		zorgprocess = r1;
 		technologie = r2;
-		String ongeselecteerd = "Ongeselecteerd";
 		
 		
-		if (gebruiker && zorgprocess && technologie == "Ongeselecteerd") {
+		if (gebruiker == "Ongeselecteerd" && zorgprocess == "Ongeselecteerd" && technologie == "Ongeselecteerd") {
 				
 			Log.i("ALLES","SELECT * FROM ehealth");
 				
-		} else if (gebruiker != "Filter gebruiker" && zorgprocess == "Filter process" && technologie == "Filter technologie") {
+		} else if (gebruiker != "Ongeselecteerd" && zorgprocess == "Ongeselecteerd" && technologie == "Ongeselecteerd") {
 				
 			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE gebruiker = gebruiker");
 					
-		} else if (gebruiker == "Filter gebruiker" && zorgprocess != "Filter process" && technologie == "Filter technologie") {
+		} else if (gebruiker == "Ongeselecteerd" && zorgprocess != "Ongeselecteerd" && technologie == "Ongeselecteerd") {
 				
 			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE zorgprocess = zorgprocess");
 				
-		} else if (gebruiker == "Filter gebruiker" && zorgprocess == "Filter process" && technologie != "Filter technologie") {
+		} else if (gebruiker == "Ongeselecteerd" && zorgprocess == "Ongeselecteerd" && technologie != "Ongeselecteerd") {
 				
 			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE technologie = technologie");
 				
-		} else if (gebruiker != "Filter gebruiker" && zorgprocess != "Filter process" && technologie == "Filter technologie") {
+		} else if (gebruiker != "Ongeselecteerd" && zorgprocess != "Ongeselecteerd" && technologie == "Ongeselecteerd") {
 				
 			Log.i("ZOEKOPr0+r1","SELECT * FROM ehealth WHERE gebruiker = gebruiker AND zorgprocess = zorgprocess");
 				
-		} else if (gebruiker != "Filter gebruiker" && zorgprocess == "Filter process" && technologie != "Filter technologie") {
+		} else if (gebruiker != "Ongeselecteerd" && zorgprocess == "Ongeselecteerd" && technologie != "Ongeselecteerd") {
 				
 			Log.i("ZOEKOPr0+r2","SELECT * FROM ehealth WHERE gebruiker = gebruiker AND technologie = technologie");
 				
-		} else if (gebruiker == "Filter gebruiker" && zorgprocess != "Filter process" && technologie != "Filter technologie") {
+		} else if (gebruiker == "Ongeselecteerd" && zorgprocess != "Ongeselecteerd" && technologie != "Ongeselecteerd") {
 				
 			Log.i("ZOEKOPr1+r2","SELECT * FROM ehealth WHERE zorgprocess = zorgprocess AND technologie = technologie");
 				
-		} else if (gebruiker != "Filter gebruiker" && zorgprocess != "Filter process" && technologie != "Filter technologie") {
+		} else if (gebruiker != "Ongeselecteerd" && zorgprocess != "Ongeselecteerd" && technologie != "Ongeselecteerd") {
 				
 			Log.i("ZOEKOPr1+r2+r3","SELECT * FROM ehealth WHERE gebruiker = gebruiker AND zorgprocess = zorgprocess AND technologie = technologie");
 				
 		}
 		
 		
-				
+		/*		
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 		nameValuePairs.add(new BasicNameValuePair("geb", gebruiker ));
 		nameValuePairs.add(new BasicNameValuePair("zorg", zorgprocess ));
@@ -190,7 +189,9 @@ public class FiltermenuFragment extends Fragment {
 			e.printStackTrace();
 					
 		}
-				
+			
+		*/
+		
 				
 	} 
 			

@@ -129,6 +129,7 @@ public class MainActivity extends ActionBarActivity {
     public void myClickMethod2 (View v) {
 		
     	FiltermenuFragment.zoekOpFilter(v);
+    	
 			 
 	}
 
