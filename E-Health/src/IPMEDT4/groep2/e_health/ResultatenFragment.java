@@ -11,16 +11,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ResultatenFragment extends Fragment{
 	
 	View rootview;
 	private TextView responseTextView;
+	Button button;
 	
-	public ResultatenFragment() {
-		
-	}
 	@Nullable
 	@Override
 
@@ -29,6 +30,16 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
 	rootview = inflater.inflate(R.layout.resultaten,container, false);
 	
     this.responseTextView = (TextView) rootview.findViewById(R.id.responseTextView);
+    button = (Button) rootview.findViewById(R.id.button);
+    button.setOnClickListener(new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+		
+			Toast.makeText(getActivity(), "FTW", Toast.LENGTH_LONG).show();
+			
+		}
+	});
     
     new GetAllIdTask().execute(new ApiConnector());
 	

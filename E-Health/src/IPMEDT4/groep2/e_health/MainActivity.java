@@ -122,20 +122,5 @@ public class MainActivity extends ActionBarActivity {
         // Pass any configuration change to the drawer toggles
         dlDrawer.getDrawerToggle().onConfigurationChanged(newConfig);
     }
-    
-    
-    public void myClickMethod1 (View v) {
-        ResultatenFragment.onClickButton1(v);
-    }
-    
-    public void myClickMethod2 (View v) {
-		
-    	FiltermenuFragment.zoekOpFilter(v);
-    	
-    	dlDrawer.selectDrawerItem(2);
-    	   
-			 
-	}
-
+ 
 }
-

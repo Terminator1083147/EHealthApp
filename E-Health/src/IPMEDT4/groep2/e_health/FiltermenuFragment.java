@@ -20,10 +20,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
@@ -69,6 +71,25 @@ public class FiltermenuFragment extends Fragment {
 		
 
 		rootview = inflater.inflate(R.layout.filtermenu, container, false);
+		Button button;
+		button = (Button) rootview.findViewById(R.id.button);
+	    button.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+			
+				new ZoekInDB().execute("");
+				Fragment nextFrag = new ResultatenFragment();
+				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+				transaction.replace(R.id.flContent, nextFrag);
+				transaction.addToBackStack(null);
+				transaction.commit();
+				
+				
+				
+			}
+		});
+	    
 		ExpandableListView elv = (ExpandableListView) rootview
 				.findViewById(R.id.list);
 		elv.setAdapter(new SavedTabsListAdapter(groups, children));
@@ -158,67 +179,72 @@ public class FiltermenuFragment extends Fragment {
 			Log.i("ZOEKOPr1+r2+r3","SELECT * FROM ehealth WHERE gebruiker = gebruiker AND zorgprocess = zorgprocess AND technologie = technologie");
 				
 		}
-		*/
 		
-		/*
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 		nameValuePairs.add(new BasicNameValuePair("geb", gebruiker ));
 		nameValuePairs.add(new BasicNameValuePair("zorg", zorgprocess ));
 		nameValuePairs.add(new BasicNameValuePair("tech", technologie ));
 				
-		
+		*/
 	} 
+	
+	public class ZoekInDB extends AsyncTask<String, Void, String> {
+		
+		@Override
+		protected String doInBackground(String... params) {
 			
-	
-	
-	public class MyAsyncTask extends AsyncTask<String, Integer, Double> {
+			String gebruiker, zorgprocess, technologie;
+			gebruiker = r0;
+			zorgprocess = r1;
+			technologie = r2;
 
-		InputStream is = null;
-		protected Double doInBackground(String... params) {
-			// TODO Auto-generated method stub
-			postData(params[0], mTag, mTag);
-			return null;
-		}
-		protected void onPostExecute(Double result){
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+			nameValuePairs.add(new BasicNameValuePair("geb", gebruiker ));
+			nameValuePairs.add(new BasicNameValuePair("zorg", zorgprocess ));
+			nameValuePairs.add(new BasicNameValuePair("tech", technologie )); 
 			
-		}
-		
-		protected void onProgressUpdate(Integer... progress){
-			
-		}
-		
-		public void postData(String gebruiker, String process, String technologie){
 			try {
-				
-				HttpClient httpClient = new DefaultHttpClient();
-					
-				HttpPost httpPost = new HttpPost("http://149.210.186.53/getAlles");
-						
-				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-						
-				HttpResponse response = httpClient.execute(httpPost);
-						
-				HttpEntity entity = response.getEntity();
-						
-				is = entity.getContent();
-						
-			} catch (ClientProtocolException e) {
-						
-				Log.e("Log_tag", "ClientProtocol");
-				e.printStackTrace();
-						
-			} catch(IOException e) {
-						
-				Log.e("Log_tag", "IOException");
-				e.printStackTrace();
-						
-			}
-		}
-*/
-		
-	}
-	
 			
+			HttpClient httpClient = new DefaultHttpClient();
+				
+			HttpPost httpPost = new HttpPost("http://149.210.186.53/getAlles");
+					
+			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+					
+			HttpResponse response = httpClient.execute(httpPost);
+					
+			HttpEntity entity = response.getEntity();
+					
+			InputStream is = entity.getContent();
+					
+			} catch (ClientProtocolException e) {
+					
+			Log.e("Log_tag", "ClientProtocol");
+			e.printStackTrace();
+					
+			} catch(IOException e) {
+					
+			Log.e("Log_tag", "IOException");
+			e.printStackTrace();
+					
+			}
+			
+			return null;
+		}	
+		
+        @Override
+        protected void onPostExecute(String result) {
+        }
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+        }
+ 
+    }
 	
 	public class SavedTabsListAdapter extends BaseExpandableListAdapter {
 
