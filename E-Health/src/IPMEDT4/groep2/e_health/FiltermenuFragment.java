@@ -122,7 +122,7 @@ public class FiltermenuFragment extends Fragment {
 		zorgprocess = r1;
 		technologie = r2;
 		
-		new MyAsyncTask().execute(gebruiker, zorgprocess, technologie);
+	    //new MyAsyncTask().execute(gebruiker, zorgprocess, technologie);
 		
 		/*
 		if (gebruiker == "Ongeselecteerd" && zorgprocess == "Ongeselecteerd" && technologie == "Ongeselecteerd") {
@@ -160,7 +160,7 @@ public class FiltermenuFragment extends Fragment {
 		}
 		*/
 		
-		
+		/*
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 		nameValuePairs.add(new BasicNameValuePair("geb", gebruiker ));
 		nameValuePairs.add(new BasicNameValuePair("zorg", zorgprocess ));
@@ -214,7 +214,7 @@ public class FiltermenuFragment extends Fragment {
 						
 			}
 		}
-
+*/
 		
 	}
 	

@@ -7,15 +7,14 @@
     <string name="hello_world">Hello test</string>
     -->
     
-    <string name="action_settings">Over ons</string>
     
-    <string name="menu1">Disclaimer</string>
     
     <string name="action_search">search</string>
 
     <string name="startpagina">Informatie e-health</string>
     <string name="filtermenu">filter</string>
     <string name="resultaten">resultaat</string>
+    <string name="overons">Over ons</string>
     
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

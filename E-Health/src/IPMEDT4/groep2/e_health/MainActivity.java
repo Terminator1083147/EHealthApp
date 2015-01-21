@@ -14,9 +14,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,12 +36,17 @@ import android.widget.TextView;
 public class MainActivity extends ActionBarActivity {
 	
 	private FragmentNavigationDrawer dlDrawer;
+	
+	
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        ActionBar bar = getActionBar();
+    	bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EA4D4E")));
         
      // Find our drawer view
         dlDrawer = (FragmentNavigationDrawer) findViewById(R.id.drawer_layout);
@@ -47,7 +57,8 @@ public class MainActivity extends ActionBarActivity {
         dlDrawer.addNavItem("Startpagina", "Startpagina", StartpaginaFragment.class);
         dlDrawer.addNavItem("Filter menu", "Filter menu", FiltermenuFragment.class);
         dlDrawer.addNavItem("Resultaten", "Resultaten", ResultatenFragment.class);
-        
+        dlDrawer.addNavItem("Over ons", "Over ons", OveronsFragment.class);
+       
         // Select default
         if (savedInstanceState == null) {
             dlDrawer.selectDrawerItem(0);   
@@ -94,17 +105,7 @@ public class MainActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-        	//als over ons drukt voer code uit
-            return true;
-        }
-        else if (id == R.id.menu1) {
-            
-        	//als over ons drukt voer code uit
-        	return true;
-        }
-        
+     
         return super.onOptionsItemSelected(item);
     }
     
