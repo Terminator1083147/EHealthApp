@@ -30,17 +30,17 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
 	rootview = inflater.inflate(R.layout.resultaten,container, false);
 	
     this.responseTextView = (TextView) rootview.findViewById(R.id.responseTextView);
-    button = (Button) rootview.findViewById(R.id.button);
-    button.setOnClickListener(new OnClickListener() {
+   // button = (Button) rootview.findViewById(R.id.button);
+   // button.setOnClickListener(new OnClickListener() {
 		
-		@Override
+	/*	@Override
 		public void onClick(View v) {
 		
 			Toast.makeText(getActivity(), "FTW", Toast.LENGTH_LONG).show();
 			
 		}
 	});
-    
+    */
     new GetAllIdTask().execute(new ApiConnector());
 	
 	return rootview;

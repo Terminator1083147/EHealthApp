@@ -134,7 +134,7 @@ public class FiltermenuFragment extends Fragment {
 		return rootview;
 
 	} 
-	
+	/*
 	public static void zoekOpFilter(View v) {
 		
 		
@@ -186,7 +186,7 @@ public class FiltermenuFragment extends Fragment {
 		nameValuePairs.add(new BasicNameValuePair("tech", technologie ));
 				
 		*/
-	} 
+	//} 
 	
 	public class ZoekInDB extends AsyncTask<String, Void, String> {
 		
@@ -197,6 +197,8 @@ public class FiltermenuFragment extends Fragment {
 			gebruiker = r0;
 			zorgprocess = r1;
 			technologie = r2;
+			
+			
 
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 			nameValuePairs.add(new BasicNameValuePair("geb", gebruiker ));
@@ -207,7 +209,7 @@ public class FiltermenuFragment extends Fragment {
 			
 			HttpClient httpClient = new DefaultHttpClient();
 				
-			HttpPost httpPost = new HttpPost("http://149.210.186.53/getAlles");
+			HttpPost httpPost = new HttpPost("http://149.210.186.53/filterpagina.php");
 					
 			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 					

@@ -2,11 +2,11 @@
 
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">3dp</dimen>
     
     <dimen name="listview">80dp</dimen>
     <dimen name="listwidth">50dp</dimen>
-    <dimen name="listtextgrote">10dp</dimen>
-    <dimen name="childlisttextgrote">8dp</dimen>
+    <dimen name="listtextgrote">20dp</dimen>
+    <dimen name="childlisttextgrote">20dp</dimen>
 
 </resources>

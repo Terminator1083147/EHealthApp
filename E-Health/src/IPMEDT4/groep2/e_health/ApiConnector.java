@@ -23,7 +23,7 @@ public class ApiConnector {
 
         // URL voor het ophalen van alle IDs
 
-        String url = "http://149.210.186.53/getAlles.php";
+        String url = "http://149.210.186.53/filterpagina.php";
 
         HttpEntity httpEntity = null;
 
