@@ -54,8 +54,8 @@ public class MainActivity extends ActionBarActivity {
         dlDrawer.setupDrawerConfiguration((ListView) findViewById(R.id.lvDrawer), 
                      R.layout.drawer_nav_item, R.id.flContent);
         // Add nav items
-        dlDrawer.addNavItem("Startpagina", "Startpagina", StartpaginaFragment.class);
-        dlDrawer.addNavItem("Filter menu", "Filter menu", FiltermenuFragment.class);
+        dlDrawer.addNavItem("Informatie", "Informatie", InformatieFragment.class);
+        dlDrawer.addNavItem("Filters", "Filters", FiltermenuFragment.class);
         dlDrawer.addNavItem("Resultaten", "Resultaten", ResultatenFragment.class);
         dlDrawer.addNavItem("Over ons", "Over ons", OveronsFragment.class);
        

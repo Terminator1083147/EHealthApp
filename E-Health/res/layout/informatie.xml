@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+ <!--  android:text="startpaginatest" -->
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -11,7 +13,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="@string/overons"
+        android:lines="1"
+        android:text="@string/Informatie"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="25dp" />
 
@@ -21,11 +24,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Wij zijn drie studenten aan de Hoge School Leiden, en hebben deze applicatie gemaakt als opdracht (project Ipmedt4) voor een externe opdrachtgever binnen de Hoge School."
+        android:text="e-Health is het gebruik van nieuwe informatie- en communicatietechnologieën, en met name Internet-technologie, om gezondheid en gezondheidszorg te ondersteunen of te verbeteren."
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="12dp" />
 
@@ -35,12 +38,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="29dp"
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="De informatie in de Applicatie is afkomstig van Nictiz, dit is met toestemming van maar niet in opdracht van Nictiz!"
+        android:text="De drie dimensies van e-health zijn Gebruiker, Zorgprocess en Technologie. Deze dimensies zijn in de App verwerkt in de filters waardoor u gericht en efficient bij informatie kunt komen. U komt hier door op het menu de optie Filters te selecteren!"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="12dp" />
- 
+
 </RelativeLayout>

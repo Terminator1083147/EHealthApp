@@ -89,7 +89,4 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
         }
     }
 	
-	public static void onClickButton1(View v) {
-		 Log.i("CLICKLICKLICK", "MEEEEEEH");
-	} 
 }
