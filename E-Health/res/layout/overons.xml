@@ -13,7 +13,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/overons"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="25dp" />
+        android:textSize="28dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -27,7 +27,7 @@
         android:paddingRight="10dp"
         android:text="Wij zijn drie studenten aan de Hoge School Leiden, en hebben deze applicatie gemaakt als opdracht (project Ipmedt4) voor een externe opdrachtgever binnen de Hoge School."
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="12dp" />
+        android:textSize="15dp" />
 
     <TextView
         android:id="@+id/TextView01"
@@ -41,6 +41,6 @@
         android:paddingRight="10dp"
         android:text="De informatie in de Applicatie is afkomstig van Nictiz, dit is met toestemming van maar niet in opdracht van Nictiz!"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="12dp" />
+        android:textSize="15dp" />
  
 </RelativeLayout>

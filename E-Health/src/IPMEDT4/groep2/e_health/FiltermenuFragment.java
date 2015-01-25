@@ -38,16 +38,6 @@ public class FiltermenuFragment extends Fragment {
 	static String r0 = "Ongeselecteerd";
 	static String r1 = "Ongeselecteerd";
 	static String r2 = "Ongeselecteerd";
-	/*
-	 * public void onCreate(Bundle savedInstanceState) {
-	 * super.onCreate(savedInstanceState);
-	 * 
-	 * // Log.i("test", "hoi");
-	 * 
-	 * TextView test = (TextView)
-	 * getActivity().findViewById(R.id.text_filtermenu);
-	 * test.setText(R.string.filtermenu);
-	 */
 
 	View rootview;
 
@@ -85,8 +75,6 @@ public class FiltermenuFragment extends Fragment {
 				transaction.addToBackStack(null);
 				transaction.commit();
 				
-				
-				
 			}
 		});
 	    
@@ -111,7 +99,6 @@ public class FiltermenuFragment extends Fragment {
 					
 					result0.setText(group);
 					r0 = group;
-					//String r0 = (String) result0.getText();
 					
 				} else if (groupPosition == 1) {
 
@@ -126,13 +113,11 @@ public class FiltermenuFragment extends Fragment {
 				}
 
 				return false;
-				
 			}
 			
 		});
 
 		return rootview;
-
 	} 
 	/*
 	public static void zoekOpFilter(View v) {

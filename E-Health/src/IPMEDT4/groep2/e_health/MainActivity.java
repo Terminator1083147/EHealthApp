@@ -37,9 +37,6 @@ public class MainActivity extends ActionBarActivity {
 	
 	private FragmentNavigationDrawer dlDrawer;
 	
-	
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +63,6 @@ public class MainActivity extends ActionBarActivity {
      
     }
     
-
-    
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content
@@ -82,7 +77,6 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Inflate the menu; this adds items to the action bar if it is present.
-        
     	//getMenuInflater().inflate(R.menu.main, menu);
        // getMenuInflater().inflate(R.menu.main_activity_action, menu);
         //return true;
@@ -101,11 +95,9 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
 
-       
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-     
         return super.onOptionsItemSelected(item);
     }
     
@@ -122,5 +114,4 @@ public class MainActivity extends ActionBarActivity {
         // Pass any configuration change to the drawer toggles
         dlDrawer.getDrawerToggle().onConfigurationChanged(newConfig);
     }
- 
 }

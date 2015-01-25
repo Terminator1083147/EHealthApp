@@ -12,11 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:lines="1"
         android:text="@string/Informatie"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="25dp" />
+        android:textSize="28dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -24,13 +24,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="e-Health is het gebruik van nieuwe informatie- en communicatietechnologieën, en met name Internet-technologie, om gezondheid en gezondheidszorg te ondersteunen of te verbeteren."
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="12dp" />
+        android:textSize="15dp" />
 
     <TextView
         android:id="@+id/TextView01"
@@ -38,12 +38,26 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="39dp"
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="De drie dimensies van e-health zijn Gebruiker, Zorgprocess en Technologie. Deze dimensies zijn in de App verwerkt in de filters waardoor u gericht en efficient bij informatie kunt komen. U komt hier door op het menu de optie Filters te selecteren!"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="12dp" />
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/TextView01"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="De andere opties in het menu zijn: Informatie (hier bevind u zich nu), Resultaten hier kunt u terecht als u na het zoeken terug wil naar de laatste zoekopdracht, Over ons hier is informatie te vinden over de makers van de Applicatie en waar de inhoudelijke onformatie vandaan komt."
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="15dp" />
 
 </RelativeLayout>

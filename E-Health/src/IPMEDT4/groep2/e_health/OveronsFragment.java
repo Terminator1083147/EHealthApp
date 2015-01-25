@@ -12,8 +12,6 @@ import android.widget.ListView;
 
 public class OveronsFragment extends Fragment{
 
-	
-	
 	View rootview;
 	@Nullable
 	@Override
