@@ -16,6 +16,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -67,13 +68,28 @@ public class FiltermenuFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-			
-				new ZoekInDB().execute("");
-				Fragment nextFrag = new ResultatenFragment();
-				FragmentTransaction transaction = getFragmentManager().beginTransaction();
-				transaction.replace(R.id.flContent, nextFrag);
-				transaction.addToBackStack(null);
-				transaction.commit();
+				
+				if(checkInternetConnection()) {
+					
+					new ZoekInDB().execute("");
+					Fragment nextFrag = new ResultatenFragment();
+					FragmentTransaction transaction = getFragmentManager().beginTransaction();
+					transaction.replace(R.id.flContent, nextFrag);
+					transaction.addToBackStack(null);
+					transaction.commit();
+					
+				} else {
+					
+					//Context context = getApplicationContext();
+					Context context = v.getContext();
+					CharSequence text = "Er is geen internetconnectie beschikbaar. zorg dat er een internetconnectie is " +
+							"zodat er gegevens kunnen worden gestuurd.";
+					int duration = Toast.LENGTH_SHORT;
+
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();	
+					
+				}
 				
 			}
 		});
@@ -119,59 +135,20 @@ public class FiltermenuFragment extends Fragment {
 
 		return rootview;
 	} 
-	/*
-	public static void zoekOpFilter(View v) {
-		
-		
-		String gebruiker, zorgprocess, technologie;
-		gebruiker = r0;
-		zorgprocess = r1;
-		technologie = r2;
-		
-	    //new MyAsyncTask().execute(gebruiker, zorgprocess, technologie);
-		
-		/*
-		if (gebruiker == "Ongeselecteerd" && zorgprocess == "Ongeselecteerd" && technologie == "Ongeselecteerd") {
-				
-			Log.i("ALLES","SELECT * FROM ehealth");
-				
-		} else if (gebruiker != "Ongeselecteerd" && zorgprocess == "Ongeselecteerd" && technologie == "Ongeselecteerd") {
-				
-			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE gebruiker = gebruiker");
-					
-		} else if (gebruiker == "Ongeselecteerd" && zorgprocess != "Ongeselecteerd" && technologie == "Ongeselecteerd") {
-				
-			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE zorgprocess = zorgprocess");
-				
-		} else if (gebruiker == "Ongeselecteerd" && zorgprocess == "Ongeselecteerd" && technologie != "Ongeselecteerd") {
-				
-			Log.i("ZOEKOPr0","SELECT * FROM ehealth WHERE technologie = technologie");
-				
-		} else if (gebruiker != "Ongeselecteerd" && zorgprocess != "Ongeselecteerd" && technologie == "Ongeselecteerd") {
-				
-			Log.i("ZOEKOPr0+r1","SELECT * FROM ehealth WHERE gebruiker = gebruiker AND zorgprocess = zorgprocess");
-				
-		} else if (gebruiker != "Ongeselecteerd" && zorgprocess == "Ongeselecteerd" && technologie != "Ongeselecteerd") {
-				
-			Log.i("ZOEKOPr0+r2","SELECT * FROM ehealth WHERE gebruiker = gebruiker AND technologie = technologie");
-				
-		} else if (gebruiker == "Ongeselecteerd" && zorgprocess != "Ongeselecteerd" && technologie != "Ongeselecteerd") {
-				
-			Log.i("ZOEKOPr1+r2","SELECT * FROM ehealth WHERE zorgprocess = zorgprocess AND technologie = technologie");
-				
-		} else if (gebruiker != "Ongeselecteerd" && zorgprocess != "Ongeselecteerd" && technologie != "Ongeselecteerd") {
-				
-			Log.i("ZOEKOPr1+r2+r3","SELECT * FROM ehealth WHERE gebruiker = gebruiker AND zorgprocess = zorgprocess AND technologie = technologie");
-				
-		}
-		
-		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-		nameValuePairs.add(new BasicNameValuePair("geb", gebruiker ));
-		nameValuePairs.add(new BasicNameValuePair("zorg", zorgprocess ));
-		nameValuePairs.add(new BasicNameValuePair("tech", technologie ));
-				
-		*/
-	//} 
+	
+	private boolean checkInternetConnection() {
+	    ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+	    // test for connection
+	    if (cm.getActiveNetworkInfo() != null
+	            && cm.getActiveNetworkInfo().isAvailable()
+	            && cm.getActiveNetworkInfo().isConnected()) {
+	        return true;
+	    } else {
+	    	Log.d("debug", "No connection available!");
+	        //Log.v(TAG, "Internet Connection Not Present");
+	        return false;
+	    }
+	}
 	
 	public class ZoekInDB extends AsyncTask<String, Void, String> {
 		

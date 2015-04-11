@@ -3,6 +3,9 @@ package IPMEDT4.groep2.e_health;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -30,22 +33,42 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
 	rootview = inflater.inflate(R.layout.resultaten,container, false);
 	
     this.responseTextView = (TextView) rootview.findViewById(R.id.responseTextView);
-   // button = (Button) rootview.findViewById(R.id.button);
-   // button.setOnClickListener(new OnClickListener() {
-		
-	/*	@Override
-		public void onClick(View v) {
-		
-			Toast.makeText(getActivity(), "FTW", Toast.LENGTH_LONG).show();
-			
-		}
-	});
-    */
+
+    if (checkInternetConnection()) {
+    	
+    
     new GetAllIdTask().execute(new ApiConnector());
 	
+    } else {
+    	
+		//Context context = getApplicationContext();
+		Context context = rootview.getContext();
+		CharSequence text = "Er is geen internetconnectie beschikbaar. Zorg dat er een internetconnectie beschikbaar is " +
+				"zodat gegevens kunnen worden opgehaald.";
+		int duration = Toast.LENGTH_SHORT;
+
+		Toast toast = Toast.makeText(context, text, duration);
+		toast.show();
+    	
+    }
+    
 	return rootview;
 
 }
+	
+	private boolean checkInternetConnection() {
+	    ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+	    // test for connection
+	    if (cm.getActiveNetworkInfo() != null
+	            && cm.getActiveNetworkInfo().isAvailable()
+	            && cm.getActiveNetworkInfo().isConnected()) {
+	        return true;
+	    } else {
+	    	Log.d("debug", "No connection available!");
+	        //Log.v(TAG, "Internet Connection Not Present");
+	        return false;
+	    }
+	}
 	
     public void setTextToTextView(JSONArray jsonArray) {
 
